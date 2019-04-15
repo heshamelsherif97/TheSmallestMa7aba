@@ -3,11 +3,9 @@ package Redis;
 import redis.clients.jedis.Jedis;
 
 public class Redis {
+    private static Jedis jedis = new Jedis("localhost");
 
-    public static void main(String[] args) {
-        Jedis jedis = new Jedis("localhost");
-        jedis.set("foo", "bar");
-        String value = jedis.get("foo");
+    public static Jedis getJedis() {
+        return jedis;
     }
-
 }

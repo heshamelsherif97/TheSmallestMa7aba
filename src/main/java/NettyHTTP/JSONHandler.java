@@ -1,5 +1,8 @@
+
 package NettyHTTP;
 
+import Redis.Redis;
+import com.couchbase.client.deps.com.fasterxml.jackson.core.JsonParser;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -9,6 +12,7 @@ import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.json.JSONObject;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
@@ -18,23 +22,40 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 
-public class JSONHandler extends SimpleChannelInboundHandler<Object> {
+public class JSONHandler extends SimpleChannelInboundHandler<Object>{
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
-        //System.out.println("JSON HANDLER");
         ByteBuf buffer = (ByteBuf) o;
         JSONObject jsonObject = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
-        System.out.println(jsonObject.getString("service"));
-       // final String responseMessage = jsonObject.toString();
         String responseMessage  = contactMQ(jsonObject);
+        JSONObject responseMessageJson= new JSONObject(responseMessage);
+        String sessionResult = sessionHandler(responseMessage,jsonObject);
+        if(!sessionResult.equals("")){
+            responseMessageJson.put("sessionId", sessionResult);
+            responseMessage = responseMessageJson.toString();
+            Redis.getJedis().set(sessionResult, jsonObject.getString("username"));
+        }
         FullHttpResponse response = new DefaultFullHttpResponse(
                 HttpVersion.HTTP_1_1,
                 HttpResponseStatus.OK,
                 copiedBuffer(responseMessage.getBytes())
         );
         channelHandlerContext.writeAndFlush(response);
+    }
 
+    private String sessionHandler(String responseMessage , JSONObject jsonObject){
+        String result = "";
+        if(jsonObject.getString("method").equals("login")){
+//            System.out.print(responseMessage);
+            if(responseMessage.contains("Logged In")){
+                UUID sessionID = UUID.randomUUID();
+                 result = sessionID.toString();
+            }
+
+
+        }
+        return  result;
     }
 
     protected String contactMQ(JSONObject object)
@@ -57,6 +78,7 @@ public class JSONHandler extends SimpleChannelInboundHandler<Object> {
                     .correlationId(corrId)
                     .replyTo(replyQueueName)
                     .build();
+
             channel.basicPublish("", requestQueueName, props, message.getBytes("UTF-8"));
 
             //listen to response, then check against corrID

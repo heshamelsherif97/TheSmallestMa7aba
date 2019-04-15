@@ -2,6 +2,7 @@ package NettyHTTP;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
 
@@ -19,6 +20,7 @@ public class HTTPHandler extends SimpleChannelInboundHandler<Object> {
     ExecutorService executorService = Executors.newCachedThreadPool();
 
 
+
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
         ctx.fireChannelReadComplete();
@@ -27,10 +29,10 @@ public class HTTPHandler extends SimpleChannelInboundHandler<Object> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg)
             throws Exception {
+
         if (msg instanceof HttpRequest) {
 //            ctx.write(msg);
             HttpRequest request = this.request = (HttpRequest) msg;
-
             if (HttpUtil.is100ContinueExpected(request)) {
                 System.out.println("in weird 100 thing");
                 send100Continue(ctx);

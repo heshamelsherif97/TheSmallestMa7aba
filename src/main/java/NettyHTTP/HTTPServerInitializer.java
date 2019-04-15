@@ -14,6 +14,7 @@ import io.netty.handler.codec.http.cors.CorsHandler;
 public class HTTPServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel arg0) {
+        System.out.println("Here"+arg0.remoteAddress());
         //System.out.println("Arrived in initChannel");
         CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()
                 .allowedRequestHeaders("X-Requested-With", "Content-Type","Content-Length")
@@ -24,6 +25,7 @@ public class HTTPServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast("encoder", new HttpResponseEncoder());
         p.addLast(new CorsHandler(corsConfig));
         p.addLast(new HTTPHandler());
+        p.addLast(new authHandler());
         p.addLast(new JSONHandler());
     }
 }

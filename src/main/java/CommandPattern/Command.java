@@ -1,6 +1,7 @@
 package CommandPattern;
+import org.json.JSONObject;
 
 
 public interface Command {
-    void execute(Object json);
+    JSONObject execute(JSONObject json);
 }
