@@ -1,4 +1,4 @@
-FROM scratch
+FROM centos:7
 MAINTAINER ma7abasquad (medhat.hamed96@gmail.com)
 RUN apt-get update
 RUN apt-get install -y maven
