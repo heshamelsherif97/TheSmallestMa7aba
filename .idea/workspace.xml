@@ -7,11 +7,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da0a215-8596-47b6-a1a8-f1e47e821c67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/cache_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/artifacts/cache_jar/cache.jar" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/cache_jar/cache.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cache-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/Chatting/AppThreadPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/Chatting/CommandMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/Email.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/Emails/ListEmailsCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/JsonArrayToObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/ResultSetConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/user.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/AppThreadPool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/CommandMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/SignUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/UserApp$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/UserApp$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/UserApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/fib.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/getAllUsers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/getSingleUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/updateFirstName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/updateLastName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CommandPattern/userStories/updatePassword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CorrelationID/RPCClient$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CorrelationID/RPCClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CorrelationID/RPCServer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CorrelationID/RPCServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/HTTPHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/HTTPServerInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/JSONHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/NettyHTTPServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/authHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/testingHttp$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/NettyHTTP/testingHttp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Redis/Redis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-cache-1.0-SNAPSHOT.jar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +68,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Dockerfile" value="1" />
+          <entry key="Dockerfile" value="2" />
           <entry key="java" value="1" />
           <entry key="md" value="1" />
           <entry key="xml" value="2" />
@@ -39,19 +77,19 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Dockerfile" value="43" />
+          <entry key="Dockerfile" value="93" />
           <entry key="xml" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="43" />
+          <entry key="PLAIN_TEXT" value="93" />
           <entry key="XML" value="95" />
         </counts>
       </usages-collector>
@@ -59,29 +97,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            <state relative-caret-position="336">
+              <caret line="49" column="46" lean-forward="true" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="32">
+              <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -135,11 +164,6 @@
               <item name="cache" type="b2602c69:ProjectViewProjectNode" />
               <item name="DockerSIngle" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cache" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DockerSIngle" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -148,7 +172,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555371921063" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555374715906" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -188,15 +212,15 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32880434" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32880434" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32880434" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32880434" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -222,13 +246,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="40" column="42" lean-forward="true" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -236,10 +253,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="49" column="46" lean-forward="true" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+        <state relative-caret-position="32">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -254,6 +278,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

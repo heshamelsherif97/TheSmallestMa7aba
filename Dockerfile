@@ -1,4 +1,4 @@
-FROM ma7abasquad/trial:FirstTrial
+FROM scratch
 MAINTAINER ma7abasquad (medhat.hamed96@gmail.com)
 RUN apt-get update
 RUN apt-get install -y maven
