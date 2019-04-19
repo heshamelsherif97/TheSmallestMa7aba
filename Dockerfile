@@ -1,4 +1,4 @@
-FROM maven:3.6.1-jdk-8-alpine
+FROM ma7abasquad/trial:latest
 MAINTAINER ma7abasquad (medhat.hamed96@gmail.com)
 COPY pom.xml /usr/local/service/pom.xml
 COPY src /usr/local/service/src
