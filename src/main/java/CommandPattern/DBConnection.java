@@ -21,11 +21,11 @@ public class DBConnection {
     public Connection getConnection() {
         if (con == null) {
             //String url = "jdbc:postgresql://127.0.0.1:26257/";
-            String url = "jdbc:postgresql://localhost:5432/";
+            String url = "jdbc:postgresql://192.168.0.111:5432/";
             String dbName = "scalable?sslmode=disable";
             String driver = "org.postgresql.Driver";
             String userName = "postgres";
-            String password = "";
+            String password = "123456";
             try {
                 Class.forName(driver).newInstance();
                 this.con = DriverManager.getConnection(url + dbName, userName, password);

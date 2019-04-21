@@ -2,16 +2,20 @@ package CommandPattern.userStories;
 
 import CommandPattern.Command;
 
+import IPGetter.IPGetter;
+import Redis.Redis;
 import com.rabbitmq.client.*;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeoutException;
+
 
 public class UserApp {
     private static final String RPC_QUEUE_NAME = "users";
@@ -34,12 +38,16 @@ public class UserApp {
         UserApp.numberOfThreads = numberOfThreads;
     }
 
+
+
     public static void main(String args[]) {
+        setIPAdress();
         AppThreadPool appPool = new AppThreadPool(numberOfThreads);
         ExecutorService executor = appPool.getInstance();
         ConnectionFactory factory = new ConnectionFactory();
         //TODO: Get ip:port from config file
         factory.setHost("localhost");
+       // factory.setPort(8083);
         Connection connection = null;
         CommandMap.instantiate();
         try {
@@ -82,7 +90,27 @@ public class UserApp {
         }
     }
 
+    public static void setIPAdress(){
 
+        IPGetter IPG = new IPGetter();
+        String sysIP = IPG.getSystemIP();
+        String pubIP= IPG.getPublicIP();
+
+        String key= "UserApp"+UUID.randomUUID().toString();
+
+        try {
+            Redis.getJedis().set(key, pubIP);
+
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        //testing code
+        //System.out.println("redisss   "+Redis.getJedis());
+
+    }
 
     public  static void createResponse(String message, Channel channel,
                                        AMQP.BasicProperties properties,
