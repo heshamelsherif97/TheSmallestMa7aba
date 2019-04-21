@@ -1,0 +1,63 @@
+# Command to Start Redis Server
+
+$ redis-server 
+
+# Command to Create the conf file
+
+$ ../redis-server ./redis-conf  
+
+# Command to Check the Redis Cluster Status
+
+$ redis-cli --cluster check 127.0.0.1:7000
+
+# Command to create the redis cluster ( using 3 nodes as Masters )
+
+$ sudo redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 
+
+# Extra command to find master id
+
+$  sudo redis-cli -h 127.0.0.1 -p 7000  
+
+# Command to Add nodes to a specific master 
+
+$ redis-cli --cluster add-node 127.0.0.1:7005 127.0.0.1:7001 --cluster-slave --cluster-master-id dcfb4bc3f3cf80a653558c8ec031396749f26830
+-- Arguments after add-node The new node ip:port , the reference port:ip (where the cluster is stored) 
+--Then the hashed number is the master id
+
+# Command to find running redis instances
+
+$ ps aux | grep redis
+
+# Command to kill a service
+
+$ kill -9 $ProgramID
+
+# Command to Remove a node
+
+
+$ redis-cli --cluster del-node 127.0.0.1:7000 `<node-id>`
+
+# Command to know cluster nodes 
+
+$ redis-cli -p 7000 cluster nodes
+
+# Command to add node to an existing cluster
+
+$ redis-cli --cluster add-node 127.0.0.1:7006(address of new node) 127.0.0.1:7000 ( address of existing node in cluster)
+
+# command to run an interactive docker image (shell)
+sudo docker run -it ma7abasquad/redisrepo:RedisPush sh
+
+
+# Commands to create folders 
+mkdir cluster-test
+cd cluster-test
+mkdir 7000 7001 7002 7003 7004 7005 (not anymore)
+
+# Conf File 
+
+port 7000
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+appendonly yes
