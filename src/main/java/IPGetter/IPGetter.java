@@ -13,9 +13,7 @@ public class IPGetter
         try
         {
             InetAddress localhost = InetAddress.getLocalHost();
-//            System.out.println("System IP Address : " +
-//                    (localhost.getHostAddress()).trim());
-
+            System.out.println("System IP Address : "  + localhost.getHostAddress());
             // Find public IP address
             String systemipaddress = "";
             URL url_name = new URL("http://bot.whatismyipaddress.com");
@@ -61,8 +59,8 @@ public class IPGetter
     private String systemIP;
     public static void main(String args[]) throws Exception
     {
-        // Returns the instance of InetAddress containing 
-        // local host name and address 
-        IPGetter IPG = new IPGetter();
+
+        IPGetter x = new IPGetter();
+
     }
-} 
+}

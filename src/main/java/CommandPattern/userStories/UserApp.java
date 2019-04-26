@@ -72,9 +72,8 @@ public class UserApp {
                             executor.submit(task);
                             break;
                         }
-                        else {
 
-                        }
+
                     }
                 }
             };

@@ -14,6 +14,10 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.Properties;
+
 
 public class NettyHTTPServer {
     public static void start(int port) {
@@ -43,6 +47,23 @@ public class NettyHTTPServer {
     }
 
     public static void main(String[] args) throws Exception {
-        NettyHTTPServer.start(8083);
+
+        int port;
+        Properties conf = new Properties();
+        try {
+
+            File file = new File("./src/main/java/CommandPattern/userStories/config.properties");
+            FileInputStream confLoc = new FileInputStream(file);
+            conf.load(confLoc);
+            port = Integer.parseInt(conf.getProperty("nettyPort"));
+            //System.out.print(port + "test");
+        }
+        catch(Exception e)
+        {
+            System.out.print("Using Default Port, 8083");
+            port = 8083;
+
+        }
+        NettyHTTPServer.start(port);
     }
 }

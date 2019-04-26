@@ -1,6 +1,7 @@
 package CommandPattern.Controller;
 
 import CommandPattern.Command;
+import IPGetter.IPGetter;
 import org.json.JSONObject;
 
 import java.io.FileInputStream;
@@ -15,6 +16,7 @@ public class PropertiesHandler implements Command {
     static InputStream input;
 
     public static void loadPropertiesHandler(){
+        IPGetter x = new IPGetter();
         try {
 
             output = new FileOutputStream("./src/main/java/CommandPattern/userStories/config.properties");
@@ -28,7 +30,10 @@ public class PropertiesHandler implements Command {
             prop.setProperty("Db_URL2","192.168.0.111");
             prop.setProperty("UsersApp","localhost");
             prop.setProperty("Db_URL", "jdbc:postgresql://192.168.0.111:5432/");
-/*
+            prop.setProperty("nettyPort","8083");
+            //prop.setProperty("nettyHttp", x.getPublicIP());
+            prop.setProperty("JedisIP", "172.17.0.5:7000");
+            /*
             Db_URL = jdbc:postgresql://192.168.0.111:5432/
             UsersApp = localhost
             Db_URL2 = 192.168.0.111
