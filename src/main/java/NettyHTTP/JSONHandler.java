@@ -34,7 +34,7 @@ public class JSONHandler extends SimpleChannelInboundHandler<Object>{
         if(!sessionResult.equals("")){
             responseMessageJson.put("sessionId", sessionResult);
             responseMessage = responseMessageJson.toString();
-            Redis.getJedis().set(sessionResult, jsonObject.getString("username"));
+            Redis.getJedis().set(sessionResult, jsonObject.getString("email"));
         }
         FullHttpResponse response = new DefaultFullHttpResponse(
                 HttpVersion.HTTP_1_1,

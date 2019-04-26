@@ -2,25 +2,23 @@ package CommandPattern.userStories;
 
 import CommandPattern.Command;
 
-import IPGetter.IPGetter;
-import Redis.Redis;
+import CommandPattern.Controller.PropertiesHandler;
 import com.rabbitmq.client.*;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeoutException;
 
-
 public class UserApp {
+    private static String freeze;
     private static final String RPC_QUEUE_NAME = "users";
-    private static int numberOfThreads = 2;
-    private static int _prefetchCount = 50;
+    static ExecutorService executor = AppThreadPool.getInstance();
+    private static int _prefetchCount = 1000;
 
     public static int get_prefetchCount() {
         return _prefetchCount;
@@ -30,24 +28,10 @@ public class UserApp {
         UserApp._prefetchCount = _prefetchCount;
     }
 
-    public static int getNumberOfThreads() {
-        return numberOfThreads;
-    }
-
-    public static void setNumberOfThreads(int numberOfThreads) {
-        UserApp.numberOfThreads = numberOfThreads;
-    }
-
-
-
-    public static void main(String args[]) {
-        setIPAdress();
-        AppThreadPool appPool = new AppThreadPool(numberOfThreads);
-        ExecutorService executor = appPool.getInstance();
+    public static void main(String args[]) { ;
         ConnectionFactory factory = new ConnectionFactory();
         //TODO: Get ip:port from config file
         factory.setHost("localhost");
-       // factory.setPort(8083);
         Connection connection = null;
         CommandMap.instantiate();
         try {
@@ -63,24 +47,35 @@ public class UserApp {
             Consumer consumer = new DefaultConsumer(channel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                    //set properties according to the message received
-                    AMQP.BasicProperties replyProps = new AMQP.BasicProperties
-                            .Builder()
-                            .correlationId(properties.getCorrelationId())
-                            .build();
-                    String message = new String(body, "UTF-8");
-                    Runnable task = new Runnable() {
-                        public void run() {
-                            try {
-                                System.out.println("Responding to"+properties.getCorrelationId());
-                                System.out.println(message);
-                                createResponse(message, channel, properties, replyProps, envelope);
-                            } catch (Exception e) {
-                                System.out.println(e.toString());
-                            }
+                    executor = AppThreadPool.update();
+                    System.out.println("Threads " + AppThreadPool.getNumberOfThreads());
+                    while (true){
+                        freeze = PropertiesHandler.getProperty("freeze");
+                        if (freeze.equals("false")) {
+                            //set properties according to the message received
+                            AMQP.BasicProperties replyProps = new AMQP.BasicProperties
+                                    .Builder()
+                                    .correlationId(properties.getCorrelationId())
+                                    .build();
+                            String message = new String(body, "UTF-8");
+                            Runnable task = new Runnable() {
+                                public void run() {
+                                    try {
+                                        System.out.println("Responding to"+properties.getCorrelationId());
+                                        System.out.println(message);
+                                        createResponse(message, channel, properties, replyProps, envelope);
+                                    } catch (Exception e) {
+                                        System.out.println(e.toString());
+                                    }
+                                }
+                            };
+                            executor.submit(task);
+                            break;
                         }
-                    };
-                    executor.submit(task);
+                        else {
+
+                        }
+                    }
                 }
             };
             channel.basicConsume(RPC_QUEUE_NAME, false, consumer);
@@ -90,27 +85,7 @@ public class UserApp {
         }
     }
 
-    public static void setIPAdress(){
 
-        IPGetter IPG = new IPGetter();
-        String sysIP = IPG.getSystemIP();
-        String pubIP= IPG.getPublicIP();
-
-        String key= "UserApp"+UUID.randomUUID().toString();
-
-        try {
-            Redis.getJedis().set(key, pubIP);
-
-        }
-        catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-
-        //testing code
-        //System.out.println("redisss   "+Redis.getJedis());
-
-    }
 
     public  static void createResponse(String message, Channel channel,
                                        AMQP.BasicProperties properties,

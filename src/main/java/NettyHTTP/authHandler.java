@@ -19,7 +19,7 @@ public class authHandler extends SimpleChannelInboundHandler<Object> {
         try{
             String sessId = jsonObject.getString("sessionId");
             try{
-                String username = jsonObject.getString("username");
+                String username = jsonObject.getString("email");
                 if(Redis.getJedis().get(sessId).equals(username)){
                     channelHandlerContext.fireChannelRead(o);
                 }else{

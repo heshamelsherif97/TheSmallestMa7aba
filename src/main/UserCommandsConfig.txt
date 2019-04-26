@@ -1,7 +1,8 @@
-SignUp, SignUp
-getUsers, getAllUsers
-getUser, getSingleUser
-updateFirstName, updateFirstName
-updateLastName, updateLastName
-updatePassword, updatePassword
-login, login
+SignUp, CommandPattern.userStories.SignUp
+getUsers, CommandPattern.userStories.getAllUsers
+getUser, CommandPattern.userStories.getSingleUser
+updateFirstName, CommandPattern.userStories.updateFirstName
+updateLastName, CommandPattern.userStories.updateLastName
+updatePassword, CommandPattern.userStories.updatePassword
+login, CommandPattern.userStories.login
+balabizo1, CommandPattern.userStories.getAllUsers

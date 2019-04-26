@@ -30,6 +30,7 @@ CommandPattern/Chatting/CommandMap.class
 NettyHTTP/authHandler.class
 CommandPattern/Command.class
 CommandPattern/userStories/SignUp.class
+IPGetter/IPGetter.class
 CorrelationID/RPCServer.class
 NettyHTTP/HTTPHandler.class
 CorrelationID/RPCClient.class
