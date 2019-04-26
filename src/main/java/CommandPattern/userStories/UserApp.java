@@ -6,9 +6,12 @@ import CommandPattern.Controller.PropertiesHandler;
 import com.rabbitmq.client.*;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -31,7 +34,24 @@ public class UserApp {
     public static void main(String args[]) { ;
         ConnectionFactory factory = new ConnectionFactory();
         //TODO: Get ip:port from config file
-        factory.setHost("localhost");
+
+        String url = "" ;
+        Properties conf = new Properties();
+        try {
+
+            File file = new File("./src/main/java/CommandPattern/userStories/config.properties");
+            FileInputStream confLoc = new FileInputStream(file);
+            conf.load(confLoc);
+            url = conf.getProperty("UsersApp");
+            System.out.print(url + "test");
+        }
+        catch(Exception e)
+        {
+            System.out.print("DB ip not found");
+            url = " ";
+
+        }
+        factory.setHost(conf.getProperty("UsersApp"));
         Connection connection = null;
         CommandMap.instantiate();
         try {

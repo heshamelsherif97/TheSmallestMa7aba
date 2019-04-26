@@ -19,7 +19,10 @@ public class RPCServer {
 
         ConnectionFactory factory = new ConnectionFactory();
         //TODO: Get ip:port from config file
-        factory.setHost("localhost");
+        factory.setHost("192.168.0.103");
+        factory.setPort(15672);
+        factory.setUsername("guest");
+        factory.setPassword("guest");
         Connection connection = null;
         try {
             //set up connection
